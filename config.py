@@ -9,7 +9,7 @@ Created on Tue June  7 2022
 import sys
 import os
 
-FlexFrac1D = '/home/auclaije/work/PostDoc/Flexion/Objs1D/'
+FlexFrac1D = '/home/auclaije/Objs1D/'
 LibPath = 'Libraries/'
 sys.path.append(FlexFrac1D)
 sys.path.append(FlexFrac1D + LibPath)

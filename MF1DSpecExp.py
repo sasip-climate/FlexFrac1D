@@ -25,13 +25,12 @@ import pars
 
 # 0: None, 1: Lengths, 2: Lengths and FSD, 3: Lengths, FSD and saved Floes, 4: Lengths, FSD and Floes
 # 5: Length, FSD, Floes and Energy+Strain when breaking
-DoPlots = 3
+DoPlots = 2
 try:
     multiFrac = pars.multiFrac
 except:
     multiFrac = ( pars.maxFrac > 1 )
     print(f'Set multiFrac to {multiFrac} since maxFrac = {pars.maxFrac}')
-
 FractureCriterion = pars.FractureCriterion
 
 # Ice parameters
@@ -79,7 +78,7 @@ tSpecM = max(tProp[Spec.Ei > 0.1 * max(Spec.Ei)])
 Floes = [floe1]
 
 # Visualize energy propagation in the domain
-if DoPlots > 0:
+if DoPlots > 3:
     for t in np.arange(Spec.Tp, 2 * tSpecM + 1 / Spec.f[0], tSpecM / 10):
         Spec.calcExt(x, t, Floes)
         if t < tSpecM * 1.1:
@@ -88,7 +87,7 @@ if DoPlots > 0:
         # Spec.plotWMean(x, floes=[floe1], fname='Spec/Waves_{t:04.0f}.png')
 
 dt = dx / (Spec.fp * Spec.wlp)
-t = np.arange(0, 1.2 * tSpecM + 2 / Spec.f[0], Spec.Tp / 20)  # min(Spec.Tp / 20, dt))
+t = np.arange(0, 2 * tSpecM + 2 / Spec.f[0], Spec.Tp / 20)  # min(Spec.Tp / 20, dt))
 
 try:
     repeats = pars.repeats
@@ -222,3 +221,5 @@ if DoPlots > 1:
     Lines.append([calc_xstar(floe1), '$x^*$'])
 
     PlotFSD(FL, FileName=fn, Lines=Lines)
+
+print('Simulation completed', flush=True)

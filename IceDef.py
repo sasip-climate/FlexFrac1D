@@ -184,20 +184,20 @@ class Floe(object):
             try:
                 self.w = np.linalg.solve(self.A, b)
             except np.linalg.LinAlgError:
-                errorFile = open(os.getcwd() + '/LinAlgError.txt', 'a')
-                errorFile.write(f'h = {self.h}\n'
-                                f'x0 = {self.x0}\n'
-                                f'L = {self.L}\n'
-                                f'dx = {self.dx}\n'
-                                f'b = {b}\n')
-                errorFile.close()
+                # errorFile = open(os.getcwd() + '/LinAlgError.txt', 'a')
+                # errorFile.write(f'h = {self.h}\n'
+                #                f'x0 = {self.x0}\n'
+                #                f'L = {self.L}\n'
+                #                f'dx = {self.dx}\n'
+                #                f'b = {b}\n')
+                # errorFile.close()
                 # Solve the problem with a least squares method
                 try:
                     solution = np.linalg.lstsq(self.A, b)
                     self.w = solution[0]
-                    errorFile = open(os.getcwd() + '/LinAlgError.txt', 'a')
-                    errorFile.write(f'rank of A = {solution[2]}\n\n')
-                    errorFile.close()
+                    # errorFile = open(os.getcwd() + '/LinAlgError.txt', 'a')
+                    # errorFile.write(f'rank of A = {solution[2]}\n\n')
+                    # errorFile.close()
                 except np.linalg.LinAlgError:
                     raise ValueError("Computation of w does not converge")
 

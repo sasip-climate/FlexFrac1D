@@ -268,10 +268,10 @@ def BreakFloes(x, t, Floes, wave, multiFrac=True, *args):
         if Broke:
             Floes = NewFloes
         else:
-            for floe in Floes:
-                if floe.Eel > 10 * floe.k:
-                    xf, _, _, E_lists = floe.FindE_minVerbose(1, wave, t, EType=EType, V=True)
-                    PlotFracE(floe, E_lists)
+            # for floe in Floes:
+            #     if floe.Eel > 10 * floe.k:
+            #         xf, _, _, E_lists = floe.FindE_minVerbose(1, wave, t, EType=EType, V=True)
+            #         PlotFracE(floe, E_lists)
             break
 
     return Floes
