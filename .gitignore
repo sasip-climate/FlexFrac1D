@@ -1,0 +1,10 @@
+.*
+!.gitignore
+*/
+!Experiments
+!Libraries
+*test*
+!Experiments/MF1Dtest.sh
+*Test*
+!Experiments/subTest.sh
+temp*
