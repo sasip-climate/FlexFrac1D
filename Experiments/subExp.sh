@@ -125,7 +125,7 @@ for dir in `ls -d ./*/`; do
                 else
                     jdf=$jobsdone
                 fi
-                tN=$(bc -l <<< "scale=0; $t0*1.2*$jobswanted/$jdf")
+                tN=$(bc -l <<< "scale=0; $t0*1.4*$jobswanted/$jdf")
                 msg="Resubmitting $jobname. Only $jobsdone out of $jobswanted completed \n $progM Asking for $tN hours instead of $t0"
                 sed -i -e "s/#OAR.*/#OAR -l \/cpu=1\/core=2,walltime=$tN:00:00/g" ./MF1Dsub.sh
             else

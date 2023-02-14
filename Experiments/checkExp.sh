@@ -32,6 +32,7 @@ exp_run=0
 exp_int=0
 exp_left=0
 exp_kill=0
+exp_bug=0
 
 cd $workdir
 
@@ -71,6 +72,9 @@ for dir in `ls -d ./*/`; do
                     if [ $(grep -ic KILLED OAR*err) -ge 1 ]; then
                         ((exp_int-=1))
                         ((exp_kill+=1))
+                    elif [ $(grep -ic Error OAR*err) -ge 1 ]; then
+                        ((exp_int-=1))
+                        ((exp_bug+=1))
                     fi
                 fi
             fi
@@ -89,6 +93,7 @@ done
 echo Completed: $exp_done
 echo Running: $exp_run
 echo Incomplete: $exp_int
+echo Bugged: $exp_bug
 echo Killed: $exp_kill
 echo Remaining: $exp_left
-echo Total: $(($exp_done+$exp_run+$exp_int+$exp_kill+$exp_left))
+echo Total: $(($exp_done+$exp_run+$exp_int+$exp_bug+$exp_kill+$exp_left))
